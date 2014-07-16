@@ -1,0 +1,110 @@
+<% provide(:title, @job.role) %>
+<h1><%= @job.role %></h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@job , :html => {:class => "form-horizontal"})  do |f| %>
+    <%= render 'shared/error_messages', object: f.object%>
+
+    <div class="form-group">
+      <%= f.label :employer, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :employer,:placeholder =>"e.g: Google.inc", :required=>"required", :class =>"form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :location, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :location,:placeholder =>"e.g: Ultimo, Sydney, Australia", :required=>"required", :class =>"form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :role, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :role,:placeholder =>"e.g: Ruby on Rails web developer", :required=>"required", :class =>"form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_area :description, :placeholder =>"e.g: We are looking for a Ruby on rails programmer that will assist with the development of a data framework and storage solution for financial market data feeds. You may also be required to assist with the development of user interfaces.You will be working with other programmers and engineers on a truly collaborative and exciting project.", :required=>"required", :class =>"form-control", :rows => 10%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :criteria, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_area :criteria, :placeholder =>"e.g: I. Fifteen months web commercial development experience with ruby on rails II. ...", :required=>"required", :class =>"form-control", :rows => 10%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :category, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+       <select name="job[category]" id="job_role" class="form-control" required>
+        <option value="Casual" <% if @job.category == "Casual" %>selected<% end %>>Casual</option> 
+        <option value="Part-time" <% if @job.category == "Part-time" %>selected<% end %>>Part-time</option>
+        <option value="Full-time" <% if @job.category  == "Full-time" %>selected<% end %>>Full-time</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :salary_type, :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <select name="job[salary_type]" id="salary_type" class="form-control" required>
+        <option value="One-off" <% if @job.salary_type == "One-off" %>selected<% end %>>One-off</option> 
+        <option value="Hourly" <% if @job.salary_type == "Hourly" %>selected<% end %>>Hourly</option>
+        <option value="Anually" <% if @job.salary_type == "Anually" %>selected<% end %>>Anually</option>
+        <option value="Stock option" <% if @job.salary_type == "Stock option" %>selected<% end %>>Stock option</option>
+        <option value="Discussed in confidentiality" <% if @job.salary_type == "Discussed in confidentiality" %>selected<% end %>>Discussed in confidentiality</option>
+        <option value="Volunteer" <% if @job.salary_type == "Volunteer" %>selected<% end %>>Volunteer</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :salary_amount, :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :salary, :placeholder =>"e.g: 30000", :class =>"form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :closed_date, :class =>"col-sm-2 control-label" %>
+    <div class='input-group col-sm-5' id='datetimepicker5'>
+      <input name="job[closed_date]"type='text' class="form-control" data-format="DD/MM/YYYY" placeholder="DD/MM/YYYY format. e.g 25-9-2014" required="required" value="<%= @job.closed_date.strftime("%d/%m/%Y") %>"/>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-time">
+        </span>
+      </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :how_to_apply, :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :apply, :required=>"required", :class =>"form-control", :rows => 10%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-2">
+     <%= f.submit "Update", class: "btn btn-primary" %>
+   </div>
+ </div>
+
+
+ <script type="text/javascript">
+ $(function () {
+  $('#datetimepicker5').datetimepicker({
+    pickTime: false
+  });
+});
+ </script>
+
+ <% end %>
+</div>
+</div>

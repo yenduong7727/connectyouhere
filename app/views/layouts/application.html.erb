@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="<%= yield(:title).present? ? yield(:title) : 'CobaOcab' %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<%= request.url %>" />
+  <meta property="og:image" content="https://cobaocab.herokuapp.com/assets/logo4-203d6dfe95ae0f45296e2c2400ad7028.png" />
+  <meta property="og:site_name" content="Cobaocab" />
+  <meta property="og:description" content="CobaOcab, a place to list jobs for students and new graduates. Get employed and help others to get a job by sharing the job advertisement to social media or post a new job advertisement here for FREE!" />
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag "application", media: "all",
+  "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+  <%= analytics_init if Rails.env.production? %>
+</head>
+<body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=439517296145888";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <%= render 'layouts/header' %>
+  <div class="container">
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+    <%= debug(params) if Rails.env.development? %>
+  </div>
+</body>
+</html>
