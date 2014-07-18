@@ -12,5 +12,6 @@ class Job < ActiveRecord::Base
 	validates :closed_date, presence: true
 	validates :category, presence: true
 	validates :apply, presence: true
+	validates :classification, presence: true
 	validates :user_id, presence: true
 end

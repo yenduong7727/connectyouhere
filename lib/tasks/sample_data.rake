@@ -37,7 +37,8 @@ def make_jobs
     closed_date: "12-9-2014",
     category: "Full-time",
     apply: "this is how you apply",
-    location: "Sydney")
+    location: "Sydney",
+    classification: "Information Technology")
     end
 end
 

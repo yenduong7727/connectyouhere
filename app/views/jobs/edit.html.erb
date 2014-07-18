@@ -6,6 +6,13 @@
     <%= form_for(@job , :html => {:class => "form-horizontal"})  do |f| %>
     <%= render 'shared/error_messages', object: f.object%>
 
+  <div class="form-group">
+      <%= f.label :role, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :role,:placeholder =>"e.g: Ruby on Rails web developer", :required=>"required", :class =>"form-control"%>
+      </div>
+    </div>
+
     <div class="form-group">
       <%= f.label :employer, :class =>"col-sm-2 control-label" %>
       <div class="col-sm-6">
@@ -21,11 +28,23 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :role, :class =>"col-sm-2 control-label" %>
+      <%= f.label :classification, :class =>"col-sm-2 control-label" %>
       <div class="col-sm-6">
-        <%= f.text_field :role,:placeholder =>"e.g: Ruby on Rails web developer", :required=>"required", :class =>"form-control"%>
-      </div>
+       <select name="job[classification]" id="job_classification" class="form-control" required>
+        <option value="" default selected>Select the job classification</option>
+        <option value="Accounting"<% if @job.classification == "Accounting" %>selected<% end %>>Accounting</option>
+        <option value="Administration and Office Support"<% if @job.classification == "Administration and Office Support" %>selected<% end %>>Administration & Office Support</option>
+        <option value="Engineering"<% if @job.classification == "Engineering" %>selected<% end %>>Engineering</option>
+        <option value="Information Technology"<% if @job.classification == "Information Technology" %>selected<% end %>>Information Technology</option>
+        
+        <option value="Kitchen Hand"<% if @job.classification == "Kitchen Hand" %>selected<% end %>>Kitchen Hand</option>
+        <option value="Marketing"<% if @job.classification == "Marketing" %>selected<% end %>>Marketing</option>
+        <option value="Sales and Retail"<% if @job.classification == "Sales and Retail" %>selected<% end %>>Sales & Retail</option>
+        <option value="Teaching"<% if @job.classification == "Teaching" %>selected<% end %>>Teaching</option>
+        
+      </select>
     </div>
+  </div>
 
     <div class="form-group">
       <%= f.label :description, :class =>"col-sm-2 control-label" %>
@@ -45,7 +64,6 @@
       <%= f.label :category, :class =>"col-sm-2 control-label" %>
       <div class="col-sm-6">
        <select name="job[category]" id="job_role" class="form-control" required>
-        <option value="Casual" <% if @job.category == "Casual" %>selected<% end %>>Casual</option> 
         <option value="Part-time" <% if @job.category == "Part-time" %>selected<% end %>>Part-time</option>
         <option value="Full-time" <% if @job.category  == "Full-time" %>selected<% end %>>Full-time</option>
       </select>

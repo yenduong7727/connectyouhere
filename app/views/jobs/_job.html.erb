@@ -1,29 +1,20 @@
- <div class="col-md-3">
- 	<h4 class="job-category"><%= job.category %></h4>
+ <div class="col-md-3 no-padding">
+ 	<h4 class="job-category"><%= job.classification %></h4>
  	<a href="<%= job_path(job) %>">
- 		<% if job.category == "Casual" %>
- 		<button class="job-button casual-color">
- 		<% elsif job.category == "Part-time" %>
- 		<button class="job-button part-color">
- 		<% else %>
  		<button class="job-button full-color">
+ 		<% if job.category == "Full-time" %>
+ 		<img alt="separator" class="separator" src="/assets/FTBrown.png">
+ 		<% else %>
+ 		<img alt="separator" class="separator" src="/assets/PTBrown.png">
  		<% end %>
-
- 		<h4>
- 			<strong><%= job.role %></strong>
- 		</h4>
- 		<p><%= job.employer %> - <%= job.location %></p>
- 		<p>Posted <em><%= time_ago_in_words(job.created_at) %></em> ago.</p>
- 		<p>Expired: <%= job.closed_date.strftime("%d/%m/%Y") %></p>
+ 		<br/><br/>
+		<h4><strong><%= job.role %></strong></h4>
+ 		
+ 		<p><span class="glyphicon glyphicon-briefcase"></span> <%= job.employer %></p>
+ 		<p class="bottom-left"><span class="glyphicon glyphicon-map-marker"></span> <%= job.location %></p>
+ 		<p class="bottom-right"><em><%= time_ago_in_words(job.created_at) %></em> ago</p>
  		</button>
  	</a>
-
- <div class="social-likes social-likes_light" data-counters="no">
-
- 	<div class="facebook" title="Share link on Facebook" data-url="http://cobaocab.herokuapp.com/jobs/<%= job.slug %>" data-title="<%= job.description %>"></div>
- 	<div class="twitter" data-via="Coba_Ocab" data-related="Free job listing and sharing for students and new graduates" data-url="http://cobaocab.herokuapp.com/jobs/<%= job.slug %>" data-counters="no" data-title="<%= job.description %>" title="Share link on Twitter"></div>
- 	<div class="plusone" data-url="http://cobaocab.herokuapp.com/jobs/<%= job.slug %>" data-counters="no"data-title="<%= job.description %>" title="Share link on Google+"></div>
- </div>
 </div>
 
 

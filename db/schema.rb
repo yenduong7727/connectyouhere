@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213045223) do
+ActiveRecord::Schema.define(version: 20140718115128) do
 
   create_table "jobs", force: true do |t|
     t.string   "employer"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140213045223) do
     t.text     "contact_email"
     t.text     "apply"
     t.string   "slug"
+    t.string   "classification"
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug"

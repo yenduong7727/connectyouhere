@@ -1,5 +1,5 @@
 <header class="navbar navbar-fixed-top navbar-inverse" role="banner">
-  <div class="container">
+  <div class=".navbar-container">
     <div class="navbar-header">
       <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -7,15 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= image_tag "logo3.png", id: "logo2" %><%= link_to "CobaOcab", root_path, id: "logo" %>
+      <%= image_tag "Logo.png", id: "logo2" %><%= link_to "ConnectYouHere", root_path, id: "logo" %>
     </div>
     <nav style="height: 0.8px;" class="navbar-collapse bs-navbar-collapse collapse" role="navigation">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Post a job", new_job_path %></li>
-       <li><%= link_to "Seek a job", jobs_path %></li>
+        <li><%= link_to "Job", jobs_path %></li>
+       <li><%= link_to "Accomodation", jobs_path %></li>
+       
       </ul>
       <ul class="nav navbar-nav navbar-right">
-       <li><%= link_to "Home", root_path %></li>
        <% if signed_in? %>
        <li id="fat-menu" class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -32,6 +32,7 @@
       </li>
       <% else %>
       <li><%= link_to "Sign in", signin_path %></li>
+      <li><%= link_to "Sign up", signup_path %></li>
       <% end %>
     </ul>
   </nav>

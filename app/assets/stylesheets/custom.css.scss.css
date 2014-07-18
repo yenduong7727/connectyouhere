@@ -235,6 +235,10 @@ aside {
   }
 }
 
+.navbar-nav > li {
+font-size: 20px;
+margin-top: 7px;
+}
 .navbar-inverse .navbar-nav > li > a {
   color: #ffffff;
 }
@@ -532,6 +536,7 @@ h2 {
 
 #logo2{
   padding-bottom:10px;
+  padding-left:20px;
 }
 
 #SocShare.dropdown-menu {
@@ -549,7 +554,7 @@ h2 {
 .job-button{
   -moz-user-select: none;
   background-image: none;
-  border: 1px solid rgba(0, 0, 0, 0);
+  border: 2px solid rgba(120, 0, 0, 1);
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
@@ -559,12 +564,12 @@ h2 {
   padding: 6px 12px;
   text-align: center;
   vertical-align: middle;
-  height:250px;
+  height:185px;
   width:100%;
 }
 
 .job-button:hover, .job-button:focus, .job-button:active, .job-button.active {
-  border-color: #ADADAD;
+  border-color: #000000;
   color: #333333;
 }
 
@@ -577,7 +582,7 @@ h2 {
 }
 
 .full-color{
-  background-color: #d9edf7;
+  background-color: #FFF8B9;
 }
 
 h4, .h4 {
@@ -592,7 +597,40 @@ h4.job-category{
 .social-likes {
   margin: 0 auto !important;
   width: 100%;
-  text-align: center;
+}
+
+.no-padding
+{
+  padding-bottom: 20px; 
+}
+
+.separator{
+  top:16px;
+  left: 15px;
+  position:absolute;
+  width:90%;
+}
+
+.bottom-right{
+  bottom:10px;
+  right: 20px;
+  position:absolute;
+}
+
+.bottom-left{
+  bottom:10px;
+  left: 20px;
+  position:absolute;
+}
+
+.container
+{
+  width:100%;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+border-color: #101010;
+padding-right: 20px;
+padding-left: 20px;
 }
 
 
