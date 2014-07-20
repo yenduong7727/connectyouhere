@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @accomodation.title %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @accomodation.roomtype %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @accomodation.location %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @accomodation.price %>
+</p>
+
+<p>
+  <strong>Bond:</strong>
+  <%= @accomodation.bond %>
+</p>
+
+<p>
+  <strong>Available:</strong>
+  <%= @accomodation.available %>
+</p>
+
+<p>
+  <strong>Bedroom:</strong>
+  <%= @accomodation.bedroom %>
+</p>
+
+<p>
+  <strong>Bathroom:</strong>
+  <%= @accomodation.bathroom %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @accomodation.description %>
+</p>
+
+<p>
+  <strong>Smoking:</strong>
+  <%= @accomodation.smoking %>
+</p>
+
+<p>
+  <strong>Contact phone:</strong>
+  <%= @accomodation.contact_phone %>
+</p>
+
+<p>
+  <strong>Contact name:</strong>
+  <%= @accomodation.contact_name %>
+</p>
+
+<%= link_to 'Edit', edit_accomodation_path(@accomodation) %> |
+<%= link_to 'Back', accomodations_path %>

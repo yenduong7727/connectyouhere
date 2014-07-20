@@ -1,0 +1,65 @@
+<%= form_for(@accomodation) do |f| %>
+  <% if @accomodation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@accomodation.errors.count, "error") %> prohibited this accomodation from being saved:</h2>
+
+      <ul>
+      <% @accomodation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_area :title %>
+  </div>
+  <div class="field">
+    <%= f.label :roomtype %><br>
+    <%= f.text_field :roomtype %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :bond %><br>
+    <%= f.number_field :bond %>
+  </div>
+  <div class="field">
+    <%= f.label :available %><br>
+    <%= f.datetime_select :available %>
+  </div>
+  <div class="field">
+    <%= f.label :bedroom %><br>
+    <%= f.number_field :bedroom %>
+  </div>
+  <div class="field">
+    <%= f.label :bathroom %><br>
+    <%= f.number_field :bathroom %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :smoking %><br>
+    <%= f.check_box :smoking %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_phone %><br>
+    <%= f.text_field :contact_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_name %><br>
+    <%= f.text_field :contact_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

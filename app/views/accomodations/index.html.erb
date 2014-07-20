@@ -1,0 +1,49 @@
+<h1>Listing accomodations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Type</th>
+      <th>Location</th>
+      <th>Price</th>
+      <th>Bond</th>
+      <th>Available</th>
+      <th>Bedroom</th>
+      <th>Bathroom</th>
+      <th>Description</th>
+      <th>Smoking</th>
+      <th>Contact phone</th>
+      <th>Contact name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accomodations.each do |accomodation| %>
+      <tr>
+        <td><%= accomodation.title %></td>
+        <td><%= accomodation.roomtype %></td>
+        <td><%= accomodation.location %></td>
+        <td><%= accomodation.price %></td>
+        <td><%= accomodation.bond %></td>
+        <td><%= accomodation.available %></td>
+        <td><%= accomodation.bedroom %></td>
+        <td><%= accomodation.bathroom %></td>
+        <td><%= accomodation.description %></td>
+        <td><%= accomodation.smoking %></td>
+        <td><%= accomodation.contact_phone %></td>
+        <td><%= accomodation.contact_name %></td>
+        <td><%= link_to 'Show', accomodation %></td>
+        <td><%= link_to 'Edit', edit_accomodation_path(accomodation) %></td>
+        <td><%= link_to 'Destroy', accomodation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Accomodation', new_accomodation_path %>

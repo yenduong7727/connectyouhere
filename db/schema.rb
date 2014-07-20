@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718115128) do
+ActiveRecord::Schema.define(version: 20140719125940) do
+
+  create_table "accomodations", force: true do |t|
+    t.text     "title"
+    t.string   "roomtype"
+    t.string   "location"
+    t.integer  "price"
+    t.integer  "bond"
+    t.datetime "available"
+    t.integer  "bedroom"
+    t.integer  "bathroom"
+    t.text     "description"
+    t.boolean  "smoking"
+    t.string   "contact_phone"
+    t.string   "contact_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "Imagelink1"
+    t.string   "Imagelink2"
+    t.string   "Imagelink3"
+  end
 
   create_table "jobs", force: true do |t|
     t.string   "employer"

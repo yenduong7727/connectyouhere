@@ -1,23 +1,27 @@
-
-<% if signed_in? %>
 <div class="row">
-  <div class="col-md-8">
-    <h1>Open position</h1>
+	<div class="alert alert-info">ConnectYouHere provides various information such as job and accomodation for international student and worker in Australia.</div>
+  <div class="col-md-6 margintop10">
+      <%=link_to image_tag("JobsButton2.jpg", class:"homebutton"), root_path%>
   </div>
-  <div class="col-md-4">
-    <%= render 'shared/user_info' %>
+  <div class="col-md-6 margintop10">
+      <%=link_to image_tag("AccButton2.jpg", class:"homebutton"), root_path %>
   </div>
-</div>
 
-<% else %>
-<h1> Open position</h1>
-<% end %>
+</div>
+<h2> Latest Jobs</h2>
 
 <div class="row">
   <div class="col-md-12">
       <%= render @jobs %>
+      <%= link_to "More jobs >", jobs_path ,class:"btn btn-info btn-xs pull-right"%>
   </div>
 </div>
 
-<%= will_paginate @jobs, renderer: BootstrapPagination::Rails %>
+<h2> Latest Accomodation</h2>
+
+<div class="row">
+  <div class="col-md-12">
+      <%= render @jobs %>
+      <%= link_to "More accomodation >", accomodations_path ,class:"btn btn-info btn-xs pull-right"%>
+  </div>
 
