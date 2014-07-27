@@ -38,7 +38,7 @@ class AccomodationsController < ApplicationController
   # PATCH/PUT /accomodations/1
   # PATCH/PUT /accomodations/1.json
   def update
-    @accomodation = Job.find(params[:id])
+    @accomodation = Accomodation.find(params[:id])
     if @accomodation.update_attributes(accomodation_params)
       flash[:success] = "Accomodation updated"
       redirect_to @accomodation
@@ -55,7 +55,7 @@ class AccomodationsController < ApplicationController
   end
 
   private
-    def job_params
+    def accomodation_params
     params.require(:accomodation).permit!
   end
 
