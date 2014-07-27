@@ -751,14 +751,6 @@ border-top: none;
   display:none !important;
 }
 
-    body {
-      padding:0;
-    }
 
-    .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
-      margin-left: 0;
-      margin-right: 0;
-      margin-bottom:0;
-    }
 }
 
