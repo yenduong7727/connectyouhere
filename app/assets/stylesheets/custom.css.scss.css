@@ -52,11 +52,11 @@ p {
 
 /* header */
 
-#logo {
+.logo {
   margin-right: 10px;
   font-size: 1.7em;
-  padding-top : 120px;
   color: white;
+  display:inline !important;
   font-weight: bold;
   text-align:center;
   &:hover {
@@ -674,8 +674,7 @@ padding-left: 20px;
 {
   position: absolute;
   height: 300px;
-  max-width: 100%;
-  min-width: 100%;
+  width:100%;
   padding: 0px 30px 0px 0px;
   top:0px;
   left:15px;
@@ -726,6 +725,31 @@ border-top: none;
       padding:0;
       margin:0;
     }
+
+    .col-md-4
+    {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+
+    .col-md-12
+    {
+      padding-left: 0px;
+      padding-right: 0px;
+
+    }
+    .main-acc-pic
+{
+  position: absolute;
+  height: 300px;
+  width:100%;
+  padding: 0px 0px 0px 0px;
+  left:0px;
+  
+}
+.logo {
+  display:none !important;
+}
 
     body {
       padding:0;
