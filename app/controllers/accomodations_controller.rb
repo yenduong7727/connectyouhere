@@ -1,15 +1,16 @@
 class AccomodationsController < ApplicationController
-  before_action :set_accomodation, only: [:show, :edit, :update, :destroy]
-
+  before_action :signed_in_user, only: [:new, :create,:edit, :update,:destroy]
+  before_action :correct_user,   only: :destroy
   # GET /accomodations
   # GET /accomodations.json
   def index
-    @accomodations = Accomodation.all
+    @accomodations = Accomodation.all.paginate(page: params[:page] , :per_page => 20)
   end
 
   # GET /accomodations/1
   # GET /accomodations/1.json
   def show
+    @accomodation = Accomodation.find(params[:id])
   end
 
   # GET /accomodations/new
@@ -19,56 +20,57 @@ class AccomodationsController < ApplicationController
 
   # GET /accomodations/1/edit
   def edit
+    @accomodation = Accomodation.find(params[:id])
   end
 
   # POST /accomodations
   # POST /accomodations.json
   def create
-    @accomodation = Accomodation.new(accomodation_params)
-
-    respond_to do |format|
-      if @accomodation.save
-        format.html { redirect_to @accomodation, notice: 'Accomodation was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @accomodation }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @accomodation.errors, status: :unprocessable_entity }
-      end
+    @accomodation = current_user.accomodations.build(accomodation_params)
+    if @accomodation.save
+      flash[:success] = "Accomodation posted!"
+      redirect_to root_url
+    else
+      render 'accomodations/new'
     end
   end
 
   # PATCH/PUT /accomodations/1
   # PATCH/PUT /accomodations/1.json
   def update
-    respond_to do |format|
-      if @accomodation.update(accomodation_params)
-        format.html { redirect_to @accomodation, notice: 'Accomodation was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @accomodation.errors, status: :unprocessable_entity }
-      end
+    @accomodation = Job.find(params[:id])
+    if @accomodation.update_attributes(accomodation_params)
+      flash[:success] = "Accomodation updated"
+      redirect_to @accomodation
+    else
+      render 'edit'
     end
   end
 
   # DELETE /accomodations/1
   # DELETE /accomodations/1.json
   def destroy
-    @accomodation.destroy
-    respond_to do |format|
-      format.html { redirect_to accomodations_url }
-      format.json { head :no_content }
-    end
+   @accomodation.destroy
+    redirect_to root_url
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_accomodation
-      @accomodation = Accomodation.find(params[:id])
+    def job_params
+    params.require(:accomodation).permit!
+  end
+
+  def correct_user
+    @accomodation = current_user.accomodations.find_by(id: params[:id])
+    redirect_to root_url if @accomodation.nil?
+  end
+
+  def permit!
+    each_pair do |key, value|
+      convert_hashes_to_parameters(key, value)
+      self[key].permit! if self[key].respond_to? :permit!
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def accomodation_params
-      params.require(:accomodation).permit(:title, :type, :location, :price, :bond, :available, :bedroom, :bathroom, :description, :smoking, :contact_phone, :contact_name)
-    end
+    @permitted = true
+    self
+  end
 end

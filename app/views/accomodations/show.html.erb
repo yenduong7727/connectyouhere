@@ -1,64 +1,103 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @accomodation.location) %>
+<h1>Accomodation Details</h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @accomodation.title %>
-</p>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@accomodation , :html => {:class => "form-horizontal"})  do |f| %>
+    <%= render 'shared/error_messages', object: f.object%>
 
-<p>
-  <strong>Type:</strong>
-  <%= @accomodation.roomtype %>
-</p>
+  <div class="form-group">
+      <%= f.label :roomtype, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+       <p class="form-control-static"><%= @accomodation.roomtype %> </p>
+     </div>
+   </div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @accomodation.location %>
-</p>
+    <div class="form-group">
+      <%= f.label :location, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <p class="form-control-static"><%= @accomodation.location %> </p>
+      </div>
+    </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @accomodation.price %>
-</p>
+    <div class="form-group">
+      <%= f.label :price, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <p class="form-control-static">$ <%= @accomodation.price %> / week</p>
+      </div>
+    </div>
 
-<p>
-  <strong>Bond:</strong>
-  <%= @accomodation.bond %>
-</p>
+  <div class="form-group">
+      <%= f.label :bond, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <p class="form-control-static">$ <%= @accomodation.bond %> </p>
+      </div>
+    </div>
+    
+<div class="form-group">
+  <%= f.label :available, :class =>"col-sm-2 control-label" %>
+  <div class='input-group col-sm-5' id='datetimepicker5'>
+   <p class="form-control-static"><%= @accomodation.available.strftime("%d/%m/%Y") %></p>
+ </div>
+</div>
 
-<p>
-  <strong>Available:</strong>
-  <%= @accomodation.available %>
-</p>
+<div class="form-group">
+  <%= f.label :smoking, :class =>"col-sm-2 control-label" %>
+  <div class="col-sm-6"> 
+    <p class="form-control-static">
+      <% if @accomodation.smoking %>
+      Yes
+      <% else %>
+      No
+      <% end %> 
+    </p>
+  </div>
+</div>
 
-<p>
-  <strong>Bedroom:</strong>
-  <%= @accomodation.bedroom %>
-</p>
+   <div class="form-group">
+    <%= f.label :description, :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+     <p class="form-control-static"><%= simple_format @accomodation.description %> </p>
+   </div>
+ </div>
+ <div class="form-group">
+      <%= f.label :contact_name, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <p class="form-control-static"><%= @accomodation.contact_name %> </p>
+      </div>
+    </div>
 
-<p>
-  <strong>Bathroom:</strong>
-  <%= @accomodation.bathroom %>
-</p>
+    <div class="form-group">
+      <%= f.label :contact_phone, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <p class="form-control-static"><%= @accomodation.contact_phone %></p>
+      </div>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @accomodation.description %>
-</p>
 
-<p>
-  <strong>Smoking:</strong>
-  <%= @accomodation.smoking %>
-</p>
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-2">
+    <% if current_user?(@accomodation.user) %>
+    <%= link_to "Edit", edit_accomodation_path(@accomodation),:class=>"btn btn-primary"%>
+    <%= link_to "Delete", @accomodation, method: :delete,
+    data: { confirm: "Are you sure you want to remove this accomodation from the list?" },
+    title: "This cannot be undone", :class=>"btn btn-danger" %>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Contact phone:</strong>
-  <%= @accomodation.contact_phone %>
-</p>
+<div class="form-group">
+  <%= f.label :share, :class =>"col-sm-2 control-label" %>
+  <div class="col-sm-6">
+    <div class="social-likes" data-counters="no">
+      <div class="facebook" title="Share link on Facebook">Facebook</div>
+      <div class="twitter" data-via="ConnectYouHere" data-related="onnectYouHere provides various information such as job and accomodation for international student and worker in Australia." title="Share link on Twitter">Twitter</div>
+      <div class="plusone" title="Share link on Google+">Google+</div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Contact name:</strong>
-  <%= @accomodation.contact_name %>
-</p>
 
-<%= link_to 'Edit', edit_accomodation_path(@accomodation) %> |
-<%= link_to 'Back', accomodations_path %>
+<% end %>
+</div>
+</div>

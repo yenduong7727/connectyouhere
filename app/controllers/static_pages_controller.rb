@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
       @feed_items = current_user.feed.paginate(page: params[:page])
     end
     @jobs = Job.find(:all, :order => "created_at desc", :limit => 4)
+    @accomodations = Accomodation.find(:all, :order => "created_at desc", :limit => 3)
   end
   
   def help

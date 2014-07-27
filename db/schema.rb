@@ -14,18 +14,17 @@
 ActiveRecord::Schema.define(version: 20140719125940) do
 
   create_table "accomodations", force: true do |t|
-    t.text     "title"
     t.string   "roomtype"
     t.string   "location"
     t.integer  "price"
     t.integer  "bond"
     t.datetime "available"
-    t.integer  "bedroom"
-    t.integer  "bathroom"
     t.text     "description"
     t.boolean  "smoking"
     t.string   "contact_phone"
     t.string   "contact_name"
+    t.datetime "closed_at"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "Imagelink1"

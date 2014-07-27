@@ -5,6 +5,7 @@ namespace :db do
     # make_microposts
     # make_relationships
     make_jobs
+    make_accomodations
   end
 end
 
@@ -25,9 +26,37 @@ def make_users
   # end
 end
 
-def make_jobs
+def make_accomodations
   user = User.find(1)
    50.times do
+    user.accomodations.create!(roomtype: "Own room",
+    location: "Sydney",
+    description: "looking for indo flatmate,
+Bill Included ( Internet, Gas, Electricity ), Pay NO MORE than $370.
+
+For Your:
+OWN Fully Furnished Room.
+OWN Keys
+
+Very Clean & Convenience place,
+Extra Outstanding view.
+No OVERCROWDING!
+
+Contact me:
+Steven - 0425958800",
+    price: 300,
+    bond: 600,
+    available: "12-7-2014",
+    smoking: false,
+    contact_phone: 0404123456,
+    contact_name: "Kevin",
+    Imagelink1: "https://img.flatmates.com.au/img/places/large/-392628.jpg")
+    end
+end
+
+def make_jobs
+  user = User.find(1)
+   30.times do
     user.jobs.create!(employer: "Kevin Aditya",
     role: "Developer",
     description: "we are looking for genius developer who can count 1 to 10",
@@ -41,20 +70,3 @@ def make_jobs
     classification: "Information Technology")
     end
 end
-
-# def make_microposts
-#   users = User.all(limit: 2)
-#   50.times do
-#     content = Faker::Lorem.sentence(5)
-#     users.each { |user| user.microposts.create!(content: content) }
-#   end
-# end
-
-# def make_relationships
-#   users = User.all
-#   user  = users.first
-#   followed_users = users[2..50]
-#   followers      = users[3..40]
-#   followed_users.each { |followed| user.follow!(followed) }
-#   followers.each      { |follower| follower.follow!(user) }
-# end

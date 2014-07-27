@@ -1,5 +1,117 @@
-<h1>New accomodation</h1>
+<% provide(:title, 'Post an accomodation') %>
+<h1>Post an accomodation</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@accomodation , :html => {:class => "form-horizontal"})  do |f| %>
+    <%= render 'shared/error_messages', object: f.object%>
 
-<%= link_to 'Back', accomodations_path %>
+    <div class="form-group">
+      <%= f.label :roomtype, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+       <select name="accomodation[roomtype]" id="accomodation_roomtype" class="form-control" required>
+        <option value="" default selected>Select the room type</option>
+        <option value="Own room">Own room</option>
+        <option value="Share room">Share room</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <%= f.label :location, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :location,:placeholder =>"e.g: Ultimo, Sydney, Australia", :required=>"required", :class =>"form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+    <%= f.label :price, "Price / week", :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :price, :placeholder =>"e.g: 300", :class =>"form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :bond, :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :bond, :placeholder =>"e.g: 600", :class =>"form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :available, :class =>"col-sm-2 control-label" %>
+    <div class='input-group col-sm-5' id='datetimepicker5'>
+      <input name="accomodation[closed_date]"type='text' class="form-control" data-format="DD/MM/YYYY" placeholder="DD/MM/YYYY format. e.g 25-9-2014" required="required"/>
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-time">
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :smoking, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+       <select name="accomodation[smoking]" id="accomodation_smoking" class="form-control" required>
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+      </select>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <%= f.label :description, :class =>"col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_area :description, :placeholder =>"e.g: We are looking for a roommate for our lovely home. Minimum stay is 4 weeks. Feel free to contact me for inspection. Available asap.", :required=>"required", :class =>"form-control", :rows => 10%>
+      </div>
+    </div>
+    <div class="form-group">
+    <%= f.label :contact_name,"name", :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :contact_name, :placeholder =>"Steven", :class =>"form-control"%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :contact_phone,"contact number", :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :contact_phone, :placeholder =>"e.g: 0404134592", :class =>"form-control"%>
+    </div>
+  </div>
+    <div class="form-group">
+    <%= f.label :Imagelink1, "Photo image link 1", :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :Imagelink1, :placeholder =>"e.g: http://img4.wikia.nocookie.net/creepypasta/images/a/a6/Birthday-Cake-6-2.png", :class =>"form-control"%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :Imagelink2,  "Photo image link 2",:class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :Imagelink2, :placeholder =>"e.g: http://img4.wikia.nocookie.net/creepypasta/images/a/a6/Birthday-Cake-6-2.png", :class =>"form-control"%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :Imagelink3, "Photo image link 3", :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :Imagelink3, :placeholder =>"e.g: http://img4.wikia.nocookie.net/creepypasta/images/a/a6/Birthday-Cake-6-2.png", :class =>"form-control"%>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-2">
+     <%= f.submit "Post this accomodation", class: "btn btn-primary" %>
+   </div>
+ </div>
+
+
+ <script type="text/javascript">
+ $(function () {
+  $('#datetimepicker5').datetimepicker({
+    pickTime: false
+  });
+});
+ </script>
+
+ <% end %>
+</div>
+</div>

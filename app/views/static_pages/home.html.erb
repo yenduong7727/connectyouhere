@@ -1,10 +1,10 @@
 <div class="row">
 	<div class="alert alert-info">ConnectYouHere provides various information such as job and accomodation for international student and worker in Australia.</div>
   <div class="col-md-6 margintop10">
-      <%=link_to image_tag("JobsButton2.jpg", class:"homebutton"), root_path%>
+      <%=link_to image_tag("JobsButton2.jpg", class:"homebutton"), jobs_path%>
   </div>
   <div class="col-md-6 margintop10">
-      <%=link_to image_tag("AccButton2.jpg", class:"homebutton"), root_path %>
+      <%=link_to image_tag("AccButton2.jpg", class:"homebutton"), accomodations_path %>
   </div>
 
 </div>
@@ -21,7 +21,8 @@
 
 <div class="row">
   <div class="col-md-12">
-      <%= render @jobs %>
+      <%= render @accomodations %>
       <%= link_to "More accomodation >", accomodations_path ,class:"btn btn-info btn-xs pull-right"%>
   </div>
+
 
