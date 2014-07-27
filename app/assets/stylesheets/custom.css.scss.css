@@ -751,6 +751,9 @@ border-top: none;
   display:none !important;
 }
 
-
+html, body {
+  width: auto !important;
+  overflow-x: hidden !important;
+}
 }
 
