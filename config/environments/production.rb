@@ -83,5 +83,5 @@ SampleApp::Application.configure do
   config.force_ssl = true
 
   # replace this with your tracker code
-  GA.tracker = "UA-47969031-1"
+  GA.tracker = "UA-53255200-1"
 end
