@@ -708,4 +708,8 @@ padding-left: 20px;
 {
   color: rgba(35, 255, 67, .5);;
 }
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus
+{
+  background: transparent;
+}
 

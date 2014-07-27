@@ -2,7 +2,12 @@
  	<a href="<%= accomodation_path(accomodation) %>">
  		<button class="accomodation-button accomodation-color">
  		<img src="<%= accomodation.Imagelink1 %>" class="main-acc-pic">
- 		<img alt="room-type" class="top-left img-small" src="/assets/OwnRoomIcon.png">
+ 		<% if accomodation.roomtype == "Own room" %>
+ 		<img alt="Own Room" class="top-left img-small" src="/assets/OwnRoomIcon.png">
+ 		<% else %>
+ 		<img alt="Share room" class="top-left img-small" src="/assets/ShareRoomIcon.png">
+ 		<% end %>
+ 		
 
  		<span class="price"><sup>$</sup> <b><%= accomodation.price %></b> <span class="price-tag"><b>AUD</b><sup>/week<sup></span></span>
  		<p class="absolute"><%= truncate( accomodation.description, :length => 140, :separator => ' ') %></p>
