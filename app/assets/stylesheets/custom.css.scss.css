@@ -603,7 +603,7 @@ h4{
 }
 h4.job-category{
   position: absolute;
-  top:1px;
+  top:0px;
   left:80px;
   font-size: 19px;
   color:white;
@@ -620,7 +620,7 @@ h4.job-category{
 }
 
 .separator{
-  top:0px;
+  top:10px;
   left: 11px;
   position:absolute;
   width:93%;
@@ -743,6 +743,13 @@ border-top: none;
 {
   position: absolute;
   height: 300px;
+  width:100%;
+  padding: 0px 0px 0px 0px;
+  left:0px;
+  
+}
+.separator
+{
   width:100%;
   padding: 0px 0px 0px 0px;
   left:0px;
