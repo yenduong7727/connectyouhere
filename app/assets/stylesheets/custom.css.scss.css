@@ -632,7 +632,7 @@ h4.job-category{
 }
 .job-description{
   position:relative;
-  top:-10px;
+  top:10px;
 }
 
 .bottom-right{
