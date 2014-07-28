@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
       @micropost  = current_user.microposts.build
       @feed_items = current_user.feed.paginate(page: params[:page])
     end
-    @jobs = Job.find(:all, :order => "created_at desc", :limit => 4)
+    @jobs = Job.find(:all, :order => "created_at desc", :limit => 3)
     @accomodations = Accomodation.find(:all, :order => "created_at desc", :limit => 3)
   end
   
