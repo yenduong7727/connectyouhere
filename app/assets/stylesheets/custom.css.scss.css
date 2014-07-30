@@ -406,7 +406,7 @@ h2 {
 }
 
 .font-semibold {
-  font-family: "Titillium Web",sans-serif;
+  font-family: 'Open Sans' , sans-serif !important;
   font-weight: 600;
 }
 
@@ -603,8 +603,8 @@ h4{
 }
 h4.job-category{
   position: absolute;
-  top:0px;
-  left:80px;
+  top:10px;
+  left:60px;
   font-size: 19px;
   color:white;
 }
@@ -721,6 +721,12 @@ footer {
 border-top: none;
 }
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
+{
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+
 @media (max-width: 978px) {
     .container {
       padding:0;
@@ -761,8 +767,12 @@ border-top: none;
 {
   width:100%;
   padding: 0px 0px 0px 0px;
-  left:0px;
-  
+  left:0px; 
+}
+
+h4.job-category{
+  font-size: 16px;
+  top:0px;
 }
 .logo {
   display:none !important;
@@ -772,5 +782,6 @@ html, body {
   width: auto !important;
   overflow-x: hidden !important;
 }
-}
 
+
+}
