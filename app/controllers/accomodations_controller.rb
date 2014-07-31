@@ -4,7 +4,7 @@ class AccomodationsController < ApplicationController
   # GET /accomodations
   # GET /accomodations.json
   def index
-    @accomodations = Accomodation.all.paginate(page: params[:page] , :per_page => 20)
+    @accomodations = Accomodation.all.order("RANDOM()")
   end
 
   # GET /accomodations/1
