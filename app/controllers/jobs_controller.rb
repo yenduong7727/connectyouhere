@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_action :correct_user,   only: :destroy
   
   def index
-    @jobs = Job.all.paginate(page: params[:page] , :per_page => 15)
+    @jobs = Job.all.order('created_at DESC').paginate(page: params[:page] , :per_page => 15)
   end
 
   def new
@@ -12,8 +12,8 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find_by_slug(params[:id])
-    @jobs = Job.where.not(id: @job.id).order("RANDOM()").where(classification: @job.classification).limit(2)
-    
+    @jobs = Job.where.not(id: @job.id).order("RANDOM()").where(classification: @job.classification).take(3)
+  
   end
 
   def edit

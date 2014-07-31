@@ -3,7 +3,6 @@ class Job < ActiveRecord::Base
 	friendly_id :role, use: :slugged
 
 	belongs_to :user
-	default_scope -> { order('created_at DESC') }
 	validates :employer, presence: true, length: { maximum: 140 }
 	validates :role, presence: true, length: { maximum: 140 }
 	validates :description, presence: true
