@@ -1,16 +1,20 @@
  <div class="col-md-4 no-padding">
  	<a href="<%= accomodation_path(accomodation) %>">
  		<button class="accomodation-button accomodation-color">
- 		<img src="<%= accomodation.Imagelink1 %>" class="main-acc-pic">
+ 		<% if accomodation.Imagelink1 == "" %>
+ 			<%= image_tag "AccComing.jpg", class: "main-acc-pic" %>
+ 		<% else %>
+ 			<img src="<%= accomodation.Imagelink1 %>" class="main-acc-pic">
+ 		<% end %>
  		<% if accomodation.roomtype == "Own room" %>
- 		<img alt="Own Room" class="top-left img-small" src="/assets/OwnRoomIcon.png">
+ 		<img alt="Own Room" class="top-left img-small" src="/assets/OwnRoomIcon.png"
  		<% else %>
  		<img alt="Share room" class="top-left img-small" src="/assets/ShareRoomIcon.png">
  		<% end %>
  		
 
  		<span class="price"><sup>$</sup> <b><%= accomodation.price %></b> <span class="price-tag"><b>AUD</b><sup>/week<sup></span></span>
- 		<p class="absolute"><%= truncate( accomodation.description, :length => 140, :separator => ' ') %></p>
+ 		<p class="absolute"><%= truncate( accomodation.description, :length => 150, :separator => ' ') %></p>
 
  		<p class="bottom-left"><span class="glyphicon glyphicon-map-marker"></span> <%= accomodation.location %></p>
  		<p class="bottom-right"><em><%= time_ago_in_words(accomodation.created_at) %></em> ago</p>
