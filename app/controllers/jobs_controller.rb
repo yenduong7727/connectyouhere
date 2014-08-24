@@ -8,6 +8,7 @@ class JobsController < ApplicationController
     else
       @jobs = Job.where("closed_date > ?", Time.zone.now.beginning_of_day).includes(:classification).order('created_at DESC').paginate(page: params[:page] , :per_page => 15)
     end
+    @selected_classification = (params[:classification_ids].present? ? params[:classification_ids] : [])
     @classifications = Classification.all
   end
 

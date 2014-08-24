@@ -6,13 +6,16 @@
 		<h3>Classification:</h3>
 		<%= form_tag({controller: "jobs", action: "index"}, method: "get", class: "form-horizontal") do%>
 
-		<div class="btn-group" data-toggle="buttons">
+		<div class="btn-group hidden-xs" data-toggle="buttons">
   		<% @classifications.each do |classification| %>
 		<label class="btn btn-primary">
-			<%= check_box_tag "classification_ids[]", classification.id %>
+		<%= check_box_tag "classification_ids[]", classification.id, @selected_classification.include?(classification.id) %>
 			<%= classification.name %>
   		</label>
 		<% end %>
+		</div>
+		<div class="visible-xs">
+			<%= collection_select :classification_ids, "", Classification.all, :id, :name, :prompt => "Select a classification" %>
 		</div>
 		<br/><br/>
 			<div>
