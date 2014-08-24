@@ -1,7 +1,7 @@
 <% provide(:title, @job.role) %>
-<h1><%= @job.role %></h1>
-
-<div class="row">
+<br/>
+<div class="row well">
+  <h1><%= @job.role %></h1>
   <div class="col-sm-9">
     <%= form_for(@job , :html => {:class => "form-horizontal"})  do |f| %>
     <%= render 'shared/error_messages', object: f.object%>
@@ -30,7 +30,7 @@
   <div class="form-group">
       <%= f.label :classification, :class =>"col-sm-2 control-label" %>
       <div class="col-sm-6">
-        <p class="form-control-static"><%= @job.classification %> </p>
+        <p class="form-control-static"><%= @job.classification.name %> </p>
       </div>
     </div>
     
@@ -106,8 +106,8 @@
       <div class="plusone" title="Share link on Google+">Google+</div>
     </div>
   </div>
-</div>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div class="form-group">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- ConnectYouHere -->
 <ins class="adsbygoogle"
      style="display:inline-block;width:300px;height:250px"
@@ -117,9 +117,15 @@
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
+</div>
+</div>
+</div>
+<div class="row">
 <% unless @jobs.nil? || @jobs.empty? %>
 <div class="col-sm-12">
   <h3>Similar Jobs</h3>
   <%= render @jobs %>
 </div>
 <% end %>
+</div>
+

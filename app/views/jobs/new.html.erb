@@ -30,18 +30,7 @@
     <div class="form-group">
       <%= f.label :classification, :class =>"col-sm-2 control-label" %>
       <div class="col-sm-6">
-       <select name="job[classification]" id="job_classification" class="form-control" required>
-        <option value="" default selected>Select the job classification</option>
-        <option value="Accounting">Accounting</option>
-        <option value="Administration and Office Support">Administration & Office Support</option>
-        <option value="Engineering">Engineering</option>
-        <option value="Information Technology">Information Technology</option>
-        <option value="Food Serving">Food Serving</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Sales and Retail">Sales & Retail</option>
-        <option value="Teaching">Teaching</option>
-        <option value="Labour">Labour</option>
-      </select>
+        <%= f.collection_select :classification_id, Classification.all, :id, :name, :prompt => "Select a classification" %>
     </div>
   </div>
 

@@ -7,13 +7,14 @@
  			<img src="<%= accomodation.Imagelink1 %>" class="main-acc-pic">
  		<% end %>
  		<% if accomodation.roomtype == "Own room" %>
- 		<img alt="Own Room" class="top-left img-small" src="/assets/OwnRoomIcon.png"
+ 		<img alt="Own Room" class="top-left img-small" src="/assets/OwnRoomIcon.png">
  		<% else %>
  		<img alt="Share room" class="top-left img-small" src="/assets/ShareRoomIcon.png">
  		<% end %>
  		
 
- 		<span class="price"><sup>$</sup> <b><%= accomodation.price %></b> <span class="price-tag"><b>AUD</b><sup>/week<sup></span></span>
+ 		<span class="price"><sup>$</sup> <b><%= accomodation.price %></b>
+ 		<span class="price-tag"><b>AUD</b><sup>/weeks<sup></span></span>
  		<p class="absolute"><%= truncate( accomodation.description, :length => 150, :separator => ' ') %></p>
 
  		<p class="bottom-left"><span class="glyphicon glyphicon-map-marker"></span> <%= accomodation.location %></p>

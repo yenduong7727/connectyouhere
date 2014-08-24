@@ -1,5 +1,5 @@
  <div class="col-md-4 no-padding">
- 	<h4 class="job-category"><%= job.classification %></h4>
+ 	<h4 class="job-category"><%= job.classification.name %></h4>
  	<a href="<%= job_path(job) %>">
  		<button class="job-button full-color">
  		<% if job.category == "Full-time" %>

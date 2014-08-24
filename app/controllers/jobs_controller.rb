@@ -3,7 +3,12 @@ class JobsController < ApplicationController
   before_action :correct_user,   only: :destroy
   
   def index
-    @jobs = Job.all.order('created_at DESC').paginate(page: params[:page] , :per_page => 15)
+    if params[:classification_ids]
+      @jobs = Job.where(:classification_id => params[:classification_ids]).where("closed_date > ?", Time.zone.now.beginning_of_day).includes(:classification).paginate(page: params[:page] , :per_page => 15)
+    else
+      @jobs = Job.where("closed_date > ?", Time.zone.now.beginning_of_day).includes(:classification).order('created_at DESC').paginate(page: params[:page] , :per_page => 15)
+    end
+    @classifications = Classification.all
   end
 
   def new
@@ -11,9 +16,8 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find_by_slug(params[:id])
-    @jobs = Job.where.not(id: @job.id).order("RANDOM()").where(classification: @job.classification).take(3)
-  
+    @job = Job.includes(:classification).find_by_slug(params[:id])
+    @jobs = Job.where.not(id: @job.id).includes(:classification).order("RANDOM()").where(classification_id: @job.classification.id).where("closed_date > ?", Time.zone.now.beginning_of_day).take(3)
   end
 
   def edit

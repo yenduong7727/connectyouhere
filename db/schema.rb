@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719125940) do
+ActiveRecord::Schema.define(version: 20140824005034) do
 
   create_table "accomodations", force: true do |t|
     t.string   "roomtype"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20140719125940) do
     t.string   "Imagelink1"
     t.string   "Imagelink2"
     t.string   "Imagelink3"
+  end
+
+  create_table "classifications", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "jobs", force: true do |t|
@@ -51,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140719125940) do
     t.text     "contact_email"
     t.text     "apply"
     t.string   "slug"
-    t.string   "classification"
+    t.integer  "classification_id", limit: 255
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug"

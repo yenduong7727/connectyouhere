@@ -1,4 +1,6 @@
 SampleApp::Application.routes.draw do
+  resources :classifications
+
   resources :accomodations
 
   root  'static_pages#home'

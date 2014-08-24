@@ -4,8 +4,10 @@ namespace :db do
     make_users
     # make_microposts
     # make_relationships
+    make_classifications
     make_jobs
     make_accomodations
+    
   end
 end
 
@@ -54,6 +56,10 @@ Steven - 0425958800",
     end
 end
 
+def make_classifications
+  a = Classification.create!(name: "Accounting")
+end
+
 def make_jobs
   user = User.find(1)
    30.times do
@@ -67,6 +73,6 @@ def make_jobs
     category: "Full-time",
     apply: "this is how you apply",
     location: "Sydney",
-    classification: "Information Technology")
+    classification_id: 1)
     end
 end
