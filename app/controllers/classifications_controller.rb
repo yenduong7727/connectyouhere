@@ -1,4 +1,4 @@
-class classificationsController < ApplicationController
+class ClassificationsController < ApplicationController
   before_action :set_classification, only: [:show, :edit, :update, :destroy]
 
   # GET /classifications
