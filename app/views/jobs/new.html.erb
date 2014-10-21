@@ -83,7 +83,7 @@
 
   <div class="form-group">
     <%= f.label :closed_date, :class =>"col-sm-2 control-label" %>
-    <div class='input-group col-sm-5' id='datetimepicker5'>
+    <div style="padding-left:15px;" class='input-group col-sm-5' id='datetimepicker5'>
       <input name="job[closed_date]"type='text' class="form-control" data-format="DD/MM/YYYY" placeholder="DD/MM/YYYY format. e.g 25-9-2014" required="required"/>
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-time">
@@ -92,14 +92,12 @@
     </div>
   </div>
 
-  
   <div class="form-group">
     <%= f.label :how_to_apply, :class =>"col-sm-2 control-label" %>
     <div class="col-sm-6">
       <%= f.text_area :apply, :placeholder =>"Please explain the process on how the candidate could apply for the position", :required=>"required", :class =>"form-control", :rows => 10%>
     </div>
   </div>
-
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-2">

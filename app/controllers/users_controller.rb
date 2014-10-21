@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @classifications = Classification.all
   end
 
   def destroy
@@ -26,12 +27,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    @user.build_user_job_criteria(:categories => params[:categories].join(', '), :classification => params[:classification].join(', '))
+    if @user.save 
       flash[:success] = "Welcome to ConnectYouHere!"
       redirect_to @user
     else
       render 'new'
     end
+
   end
 
   def edit
@@ -66,7 +69,8 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :suburb, :address,
+                                   :phone, :dob, :education, :details)
     end
 
     # Before filters

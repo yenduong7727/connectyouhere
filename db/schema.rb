@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921115301) do
+ActiveRecord::Schema.define(version: 20141018042618) do
 
   create_table "accomodations", force: true do |t|
     t.string   "roomtype"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20140921115301) do
     t.text     "contact_email"
     t.text     "apply"
     t.string   "slug"
-    t.integer  "classification_id", limit: 255
+    t.integer  "classification_id"
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug"
@@ -90,6 +90,14 @@ ActiveRecord::Schema.define(version: 20140921115301) do
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
+  create_table "user_job_criteria", force: true do |t|
+    t.integer  "user_id"
+    t.string   "classification"
+    t.string   "categories"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -98,6 +106,12 @@ ActiveRecord::Schema.define(version: 20140921115301) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin"
+    t.date     "dob"
+    t.string   "suburb"
+    t.text     "address"
+    t.string   "phone"
+    t.string   "education"
+    t.text     "details"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -5,6 +5,18 @@
   <%= form_for(@user , :html => {:class => "form-horizontal"}) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-6">
+      <div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary active">
+    <input type="radio" name="goal" id="option1" checked> Looking for jobs
+  </label>
+  <label style="margin-left:20px;"class="btn btn-primary">
+    <input type="radio" name="goal" id="option2"> Looking for employees
+</div>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :name, :class =>"col-sm-2 control-label" %>
     <div class="col-sm-6">
       <%= f.text_field :name,:required=>"required", :class =>"form-control"%>
@@ -33,10 +45,100 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :phone, :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :phone,:required=>"required", :class =>"form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address, :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :address,:required=>"required", :class =>"form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :suburb, :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_field :suburb,:required=>"required", :class =>"form-control"%>
+    </div>
+  </div>
+  
+  <div id="candidate">
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Date of birth </label>
+      <div class='col-sm-6'>
+        <input name="user[dob]"type='text' class="form-control" data-format="DD/MM/YYYY" placeholder="DD/MM/YYYY format. e.g 25-4-1992"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+    <%= f.label :education, :class =>"col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <select name="job[education]" id="education" class="form-control">
+        <option value="" default selected>Select the your current/latest education</option>
+        <option value="High school">High school</option>
+        <option value="Diploma">Diploma</option>
+        <option value="Undergraduate">Undergraduate</option>
+        <option value="Postgraduate">Postgraduate</option>
+      </select>
+    </div>
+  </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Introduction</label>
+      
+      <div class="col-sm-6">
+        <p>Tell us more about yourself. E.g your education details or latest employment</p>
+        <%= f.text_area :details, :placeholder =>"e.g: I graduated from UNSW in 2014 with excellent marks. I took finance and accounting as my major. I had a three month internship in ANZ as a account receiveable. I am looking for a full-time position as an account payable or similar roles", :class =>"form-control", :rows => 10%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Classification</label>
+      
+      <div class="col-sm-6">
+        <p>Send me emails if there is a job that suit me in the categories below:</p>
+        <div class="btn-group hidden-xs" data-toggle="buttons">
+            <% @classifications.each do |classification| %>
+          <label class="btn btn-primary">
+          <%= check_box_tag "classification[]", classification.id%>
+            <%= classification.name %>
+            </label>
+          <% end %>
+          </div>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Category</label>
+      
+      <div class="col-sm-6">
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+          <%= check_box_tag "categories[]", "part-time"%>
+            Part-time
+            </label>
+          <label class="btn btn-primary">
+          <%= check_box_tag "categories[]", "full-time"%>
+            Full-time
+            </label>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-2">
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     </div>
   </div>
-  
   <% end %>
 </div>
+<script>
+$(document).ready(function() {
+    $('input[type=radio][name=goal]').change(function() {
+        $('#candidate').toggle();
+    });
+});
+</script>
