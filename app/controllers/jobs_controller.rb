@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   
   def index
     if params[:classification_ids]
-      @jobs = Job.where(:classification_id => params[:classification_ids]).where("closed_date > ?", Time.zone.now.beginning_of_day).includes(:classification).paginate(page: params[:page] , :per_page => 15)
+      @jobs = Job.where(:classification_id => params[:classification_ids]).where("closed_date > ?", Time.zone.now.beginning_of_day).includes(:classification).order('created_at DESC').paginate(page: params[:page] , :per_page => 15)
     else
       @jobs = Job.where("closed_date > ?", Time.zone.now.beginning_of_day).includes(:classification).order('created_at DESC').paginate(page: params[:page] , :per_page => 15)
     end
